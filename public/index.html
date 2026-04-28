@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Creature Creator</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Creature Creator Lab</h1>
+        <p>Forge goblins, gremlins, raccoons, trolls, ogres, pigeons, and anything in-between.</p>
+      </header>
+
+      <section class="card controls">
+        <h2>Build a creature</h2>
+        <form id="creator-form">
+          <label>
+            Creature type
+            <select id="species" name="species"></select>
+          </label>
+
+          <label>
+            Temperament
+            <select id="temperament" name="temperament"></select>
+          </label>
+
+          <label>
+            Habitat
+            <select id="habitat" name="habitat"></select>
+          </label>
+
+          <label>
+            Distinctive trait
+            <select id="trait" name="trait"></select>
+          </label>
+
+          <button type="submit">Generate creature</button>
+        </form>
+      </section>
+
+      <section class="card output" aria-live="polite">
+        <h2>Your creation</h2>
+        <pre id="result">Choose your options and generate a creature...</pre>
+      </section>
+    </main>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
