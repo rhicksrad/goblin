@@ -10,7 +10,7 @@
     <main class="app">
       <header>
         <h1>Creature Creator Lab</h1>
-        <p>Forge goblins, gremlins, raccoons, trolls, ogres, pigeons, and anything in-between.</p>
+        <p>Forge full creature profiles with names, roles, stats, and story hooks.</p>
       </header>
 
       <section class="card controls">
@@ -36,13 +36,27 @@
             <select id="trait" name="trait"></select>
           </label>
 
-          <button type="submit">Generate creature</button>
+          <label>
+            Role
+            <select id="role" name="role"></select>
+          </label>
+
+          <div class="actions">
+            <button type="submit">Generate creature</button>
+            <button type="button" id="randomize" class="secondary">Randomize</button>
+            <button type="button" id="save" class="secondary">Save to bestiary</button>
+          </div>
         </form>
       </section>
 
       <section class="card output" aria-live="polite">
         <h2>Your creation</h2>
         <pre id="result">Choose your options and generate a creature...</pre>
+      </section>
+
+      <section class="card output">
+        <h2>Saved bestiary</h2>
+        <ol id="saved-creatures"></ol>
       </section>
     </main>
     <script type="module" src="main.js"></script>
