@@ -18,7 +18,8 @@ const result = document.querySelector("#result");
 const randomizeButton = document.querySelector("#randomize");
 const saveButton = document.querySelector("#save");
 const list = document.querySelector("#saved-creatures");
-if (!speciesSelect || !temperamentSelect || !habitatSelect || !traitSelect || !roleSelect || !form || !result || !randomizeButton || !saveButton || !list) {
+const canvas = document.querySelector("#pixel-portrait");
+if (!speciesSelect || !temperamentSelect || !habitatSelect || !traitSelect || !roleSelect || !form || !result || !randomizeButton || !saveButton || !list || !canvas) {
     throw new Error("Missing required DOM nodes for Creature Creator.");
 }
 const pick = (values) => values[Math.floor(Math.random() * values.length)];
@@ -36,6 +37,60 @@ populate("temperament", temperamentSelect);
 populate("habitat", habitatSelect);
 populate("trait", traitSelect);
 populate("role", roleSelect);
+const spritePalettes = {
+    goblin: ["#00000000", "#6fbf4b", "#3f7d2e", "#d9f7b5", "#bf5b39"],
+    gremlin: ["#00000000", "#7b78ce", "#4b4a88", "#e9e8ff", "#5dc0d5"],
+    raccoon: ["#00000000", "#8f8f95", "#56565c", "#f4f4f5", "#1f1f20"],
+    troll: ["#00000000", "#7ea95d", "#4d6f3a", "#ddeecd", "#b77f53"],
+    ogre: ["#00000000", "#8bb463", "#597740", "#d8e8bd", "#7f4531"],
+    pigeon: ["#00000000", "#8da8c8", "#5c6f89", "#f1f5ff", "#92d4be"],
+    mothman: ["#00000000", "#6f5a6d", "#3f3540", "#f2a8ac", "#d11b1f"],
+    "bog-sprite": ["#00000000", "#6bcba7", "#2f7b67", "#d8fff1", "#93e9d0"]
+};
+const spriteTemplate = [
+    "0000000000000000",
+    "0000001111110000",
+    "0000112222221100",
+    "0001222333222100",
+    "0012233444432210",
+    "0122334444443221",
+    "0123344455443321",
+    "0123344444443321",
+    "0123344554543321",
+    "0012334444443210",
+    "0001233444432100",
+    "0000123333321000",
+    "0000012222210000",
+    "0000001111110000",
+    "0000000000000000",
+    "0000000000000000"
+];
+const renderPixelPortrait = (species) => {
+    const ctx = canvas.getContext("2d");
+    if (!ctx) {
+        return;
+    }
+    const key = slug(species);
+    const palette = spritePalettes[key] ?? spritePalettes.goblin;
+    const size = 16;
+    const scale = canvas.width / size;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = "#0b1719";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (let y = 0; y < size; y += 1) {
+        const row = spriteTemplate[y];
+        for (let x = 0; x < size; x += 1) {
+            const colorIndex = Number(row[x]);
+            const color = palette[colorIndex] ?? "#00000000";
+            if (colorIndex === 0) {
+                continue;
+            }
+            ctx.fillStyle = color;
+            ctx.fillRect(x * scale, y * scale, scale, scale);
+        }
+    }
+    canvas.setAttribute("aria-label", `${species} 8-bit portrait`);
+};
 const createCreatureSheet = () => {
     const species = speciesSelect.value;
     const temperament = temperamentSelect.value;
@@ -67,6 +122,7 @@ const createCreatureSheet = () => {
     ].join("\n");
 };
 const renderCreature = () => {
+    renderPixelPortrait(speciesSelect.value);
     result.textContent = createCreatureSheet();
 };
 const randomizeSelections = () => {
