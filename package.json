@@ -4,7 +4,7 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "tsc && cp -r public/* dist/",
+    "build": "tsc && cp -r public/* dist/ && cp dist/main.js public/main.js",
     "check": "tsc --noEmit"
   },
   "devDependencies": {
