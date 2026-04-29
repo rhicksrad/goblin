@@ -48,14 +48,14 @@ populate("role", roleSelect);
 
 
 const spritePalettes = {
-  goblin: ["#00000000", "#6fbf4b", "#3f7d2e", "#d9f7b5", "#bf5b39"],
-  gremlin: ["#00000000", "#7b78ce", "#4b4a88", "#e9e8ff", "#5dc0d5"],
-  raccoon: ["#00000000", "#8f8f95", "#56565c", "#f4f4f5", "#1f1f20"],
-  troll: ["#00000000", "#7ea95d", "#4d6f3a", "#ddeecd", "#b77f53"],
-  ogre: ["#00000000", "#8bb463", "#597740", "#d8e8bd", "#7f4531"],
-  pigeon: ["#00000000", "#8da8c8", "#5c6f89", "#f1f5ff", "#92d4be"],
-  mothman: ["#00000000", "#6f5a6d", "#3f3540", "#f2a8ac", "#d11b1f"],
-  "bog-sprite": ["#00000000", "#6bcba7", "#2f7b67", "#d8fff1", "#93e9d0"]
+  goblin: ["#00000000", "#6fbf4b", "#3f7d2e", "#d9f7b5", "#bf5b39", "#1a1a1a"],
+  gremlin: ["#00000000", "#7b78ce", "#4b4a88", "#e9e8ff", "#5dc0d5", "#1a1a1a"],
+  raccoon: ["#00000000", "#8f8f95", "#56565c", "#f4f4f5", "#1f1f20", "#1a1a1a"],
+  troll: ["#00000000", "#7ea95d", "#4d6f3a", "#ddeecd", "#b77f53", "#1a1a1a"],
+  ogre: ["#00000000", "#8bb463", "#597740", "#d8e8bd", "#7f4531", "#1a1a1a"],
+  pigeon: ["#00000000", "#8da8c8", "#5c6f89", "#f1f5ff", "#92d4be", "#1a1a1a"],
+  mothman: ["#00000000", "#6f5a6d", "#3f3540", "#f2a8ac", "#d11b1f", "#1a1a1a"],
+  "bog-sprite": ["#00000000", "#6bcba7", "#2f7b67", "#d8fff1", "#93e9d0", "#1a1a1a"]
 } as const;
 
 const spriteTemplate = [
