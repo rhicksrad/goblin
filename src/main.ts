@@ -48,246 +48,105 @@ populate("role", roleSelect);
 
 
 const spritePalettes = {
-  goblin: ["#00000000", "#6fbf4b", "#3f7d2e", "#d9f7b5", "#bf5b39", "#1a1a1a"],
-  gremlin: ["#00000000", "#7b78ce", "#4b4a88", "#e9e8ff", "#5dc0d5", "#1a1a1a"],
-  raccoon: ["#00000000", "#8f8f95", "#56565c", "#f4f4f5", "#1f1f20", "#1a1a1a"],
-  troll: ["#00000000", "#7ea95d", "#4d6f3a", "#ddeecd", "#b77f53", "#1a1a1a"],
-  ogre: ["#00000000", "#8bb463", "#597740", "#d8e8bd", "#7f4531", "#1a1a1a"],
-  pigeon: ["#00000000", "#8da8c8", "#5c6f89", "#f1f5ff", "#92d4be", "#1a1a1a"],
-  mothman: ["#00000000", "#6f5a6d", "#3f3540", "#f2a8ac", "#d11b1f", "#1a1a1a"],
-  "bog-sprite": ["#00000000", "#6bcba7", "#2f7b67", "#d8fff1", "#93e9d0", "#1a1a1a"]
+  goblin: { skin: "#7cc757", shadow: "#3f7d2e", highlight: "#d9f7b5", accent: "#bf5b39", detail: "#1d2427" },
+  gremlin: { skin: "#8884db", shadow: "#49478d", highlight: "#f0eeff", accent: "#51bed8", detail: "#1d2427" },
+  raccoon: { skin: "#95959c", shadow: "#54545c", highlight: "#f4f4f5", accent: "#2b2b2d", detail: "#151515" },
+  troll: { skin: "#85ad62", shadow: "#4c6e39", highlight: "#dff0cf", accent: "#bb8658", detail: "#1d2427" },
+  ogre: { skin: "#8fb769", shadow: "#587741", highlight: "#e0edc7", accent: "#8a4c37", detail: "#1d2427" },
+  pigeon: { skin: "#95b0d2", shadow: "#5f7490", highlight: "#f1f5ff", accent: "#92d4be", detail: "#1d2427" },
+  mothman: { skin: "#7a6578", shadow: "#433943", highlight: "#f3b1b6", accent: "#dd2c30", detail: "#0e1012" },
+  "bog-sprite": { skin: "#77cfac", shadow: "#2f7b67", highlight: "#dcfff4", accent: "#93e9d0", detail: "#1d2427" }
 } as const;
 
-const speciesSprites = {
-  goblin: [
-    "0000000000000000",
-    "0000011111100000",
-    "0001122222211000",
-    "0012233333332210",
-    "0122333443333221",
-    "0123344444433321",
-    "1233444545444331",
-    "1233444444444331",
-    "1233445555554331",
-    "1233444444444331",
-    "0123344444443321",
-    "0012333333333210",
-    "0001233222232100",
-    "0000111111110000",
-    "0000000000000000",
-    "0000000000000000"
-  ],
-  gremlin: [
-    "0000000000000000",
-    "0000001100110000",
-    "0000112222221100",
-    "0001222333322210",
-    "0012233333333221",
-    "0122334444433321",
-    "1223344444443321",
-    "1223344555543321",
-    "0123344545443321",
-    "0012333444433210",
-    "0001233333332100",
-    "0000122222221000",
-    "0000011111110000",
-    "0000000101000000",
-    "0000001111100000",
-    "0000000000000000"
-  ],
-  raccoon: [
-    "0000000000000000",
-    "0000011111110000",
-    "0001122222221100",
-    "0012233553332210",
-    "0122335445433221",
-    "1223344444443321",
-    "1233444444444331",
-    "1233444555444331",
-    "1233444444444331",
-    "0123344444443321",
-    "0012333333333210",
-    "0001233222232100",
-    "0000121111121000",
-    "0000010000010000",
-    "0000011000110000",
-    "0000000000000000"
-  ],
-  troll: [
-    "0000000000000000",
-    "0000111111111000",
-    "0011222222222100",
-    "0122333333333221",
-    "1223344444443321",
-    "1233444444444331",
-    "1234455555554431",
-    "1234454545454431",
-    "1234455555554431",
-    "1233444444444331",
-    "0123344444443321",
-    "0012233333332210",
-    "0001222222221000",
-    "0000111111110000",
-    "0000011000110000",
-    "0000000000000000"
-  ],
-  ogre: [
-    "0000000000000000",
-    "0001100000001100",
-    "0012221111112220",
-    "0122333333333221",
-    "1223344444443321",
-    "1233444444444331",
-    "1234455555554431",
-    "1234454545454431",
-    "1234455555554431",
-    "1233444444444331",
-    "0123344444443321",
-    "0012233333332210",
-    "0001222222221000",
-    "0000111111110000",
-    "0000011000110000",
-    "0000000000000000"
-  ],
-  pigeon: [
-    "0000000000000000",
-    "0000001111000000",
-    "0000112222110000",
-    "0001223333221100",
-    "0012233444432210",
-    "0012334444443210",
-    "0012344445443210",
-    "0012344444443210",
-    "0012344555443210",
-    "0001234444432100",
-    "0000123333321000",
-    "0000012222210000",
-    "0000001111100000",
-    "0000000011000000",
-    "0000000110000000",
-    "0000000000000000"
-  ],
-  mothman: [
-    "0000000000000000",
-    "0000110000001100",
-    "0001221111112210",
-    "0012333333333221",
-    "0123344444443321",
-    "1233444555544331",
-    "1234444555544431",
-    "1234444545444431",
-    "1234444555544431",
-    "1233444555544331",
-    "0123344444443321",
-    "0012333333333221",
-    "0001222222222210",
-    "0000111111111100",
-    "0000011000011000",
-    "0000000000000000"
-  ],
-  "bog-sprite": [
-    "0000000000000000",
-    "0000000110000000",
-    "0000011221100000",
-    "0000112332211000",
-    "0001223444432100",
-    "0012334444443210",
-    "0123344455443321",
-    "0123344545443321",
-    "0012334555433210",
-    "0001234444432100",
-    "0000123333321000",
-    "0000012222210000",
-    "0000001111100000",
-    "0000000101000000",
-    "0000001111100000",
-    "0000000000000000"
-  ]
-} as const;
+type SpeciesKey = keyof typeof spritePalettes;
+type LayerColor = "skin" | "shadow" | "highlight" | "accent" | "detail";
 
-type PixelDot = { x: number; y: number; color: number };
-
-const spriteAccents: Record<keyof typeof spritePalettes, PixelDot[]> = {
-  goblin: [
-    { x: 3, y: 5, color: 5 }, { x: 12, y: 5, color: 5 },
-    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
-    { x: 8, y: 10, color: 4 }
-  ],
-  gremlin: [
-    { x: 2, y: 3, color: 5 }, { x: 13, y: 3, color: 5 },
-    { x: 4, y: 6, color: 3 }, { x: 11, y: 6, color: 3 },
-    { x: 8, y: 9, color: 4 }
-  ],
-  raccoon: [
-    { x: 4, y: 6, color: 5 }, { x: 5, y: 6, color: 5 }, { x: 6, y: 6, color: 5 },
-    { x: 9, y: 6, color: 5 }, { x: 10, y: 6, color: 5 }, { x: 11, y: 6, color: 5 },
-    { x: 7, y: 9, color: 3 }, { x: 8, y: 9, color: 3 }
-  ],
-  troll: [
-    { x: 3, y: 3, color: 4 }, { x: 12, y: 3, color: 4 },
-    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
-    { x: 8, y: 11, color: 5 }
-  ],
-  ogre: [
-    { x: 4, y: 3, color: 5 }, { x: 11, y: 3, color: 5 },
-    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
-    { x: 7, y: 11, color: 4 }, { x: 8, y: 11, color: 4 }
-  ],
-  pigeon: [
-    { x: 7, y: 5, color: 3 }, { x: 8, y: 5, color: 3 },
-    { x: 9, y: 7, color: 4 }, { x: 10, y: 7, color: 4 },
-    { x: 6, y: 8, color: 5 }
-  ],
-  mothman: [
-    { x: 3, y: 5, color: 4 }, { x: 12, y: 5, color: 4 },
-    { x: 5, y: 7, color: 5 }, { x: 10, y: 7, color: 5 },
-    { x: 8, y: 10, color: 4 }
-  ],
-  "bog-sprite": [
-    { x: 4, y: 5, color: 4 }, { x: 11, y: 5, color: 4 },
-    { x: 6, y: 7, color: 3 }, { x: 9, y: 7, color: 3 },
-    { x: 8, y: 10, color: 5 }
-  ]
+const hashSeed = (input: string): number => {
+  let hash = 2166136261;
+  for (let index = 0; index < input.length; index += 1) {
+    hash ^= input.charCodeAt(index);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
 };
 
+const createRng = (seed: number): (() => number) => () => {
+  let current = (seed += 0x6d2b79f5);
+  current = Math.imul(current ^ (current >>> 15), current | 1);
+  current ^= current + Math.imul(current ^ (current >>> 7), current | 61);
+  return ((current ^ (current >>> 14)) >>> 0) / 4294967296;
+};
 
-
-const renderPixelPortrait = (species: string): void => {
+const renderPixelPortrait = (species: string, seedText: string): void => {
   const ctx = canvas.getContext("2d");
-  if (!ctx) {
-    return;
-  }
+  if (!ctx) return;
 
-  const key = slug(species) as keyof typeof spritePalettes;
-  const palette = spritePalettes[key] ?? spritePalettes.goblin;
+  const key = (slug(species) as SpeciesKey) in spritePalettes ? (slug(species) as SpeciesKey) : "goblin";
+  const palette = spritePalettes[key];
   const size = 16;
   const scale = canvas.width / size;
-  const template = speciesSprites[key] ?? speciesSprites.goblin;
+  const center = (size - 1) / 2;
+  const rng = createRng(hashSeed(seedText));
 
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "#0b1719";
+  ctx.fillStyle = "#081417";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-  for (let y = 0; y < size; y += 1) {
-    const row = template[y];
-    for (let x = 0; x < size; x += 1) {
-      const colorIndex = Number(row[x]);
-      const color = palette[colorIndex] ?? "#00000000";
-      if (colorIndex === 0) {
-        continue;
-      }
-      ctx.fillStyle = color;
-      ctx.fillRect(x * scale, y * scale, scale, scale);
+  const earHeight = Math.floor(rng() * 3) + 2;
+  const jawWidth = Math.floor(rng() * 3) + 4;
+  const eyeGap = Math.floor(rng() * 2) + 2;
+  const eyeY = Math.floor(rng() * 2) + 6;
+  const mouthY = Math.floor(rng() * 2) + 10;
+  const hornChance = rng();
+  const maskChance = rng();
+
+  const pixels: Array<{ x: number; y: number; color: LayerColor }> = [];
+  const paint = (x: number, y: number, color: LayerColor): void => {
+    if (x < 0 || y < 0 || x >= size || y >= size) return;
+    pixels.push({ x, y, color });
+  };
+
+  for (let y = 1; y < size - 1; y += 1) {
+    const vertical = Math.abs(y - center) / center;
+    const halfWidth = Math.max(
+      jawWidth,
+      Math.round((1 - vertical * vertical) * 5) + 3 + (y < earHeight + 2 ? 2 : 0)
+    );
+    for (let dx = 0; dx <= halfWidth; dx += 1) {
+      const xLeft = Math.floor(center - dx);
+      const xRight = Math.ceil(center + dx);
+      const edge = dx >= halfWidth - 1;
+      paint(xLeft, y, edge ? "shadow" : "skin");
+      paint(xRight, y, edge ? "shadow" : "skin");
     }
   }
 
-  const accents = spriteAccents[key] ?? spriteAccents.goblin;
-  accents.forEach(({ x, y, color: colorIndex }) => {
-    ctx.fillStyle = palette[colorIndex] ?? "#00000000";
+  for (let x = 5; x <= 10; x += 1) paint(x, eyeY - 1, "highlight");
+  for (let y = eyeY - 1; y <= mouthY + 1; y += 1) {
+    paint(Math.floor(center - 3), y, "highlight");
+    paint(Math.ceil(center + 3), y, "highlight");
+  }
+  paint(Math.floor(center - eyeGap), eyeY, "detail");
+  paint(Math.ceil(center + eyeGap), eyeY, "detail");
+  for (let x = Math.floor(center - 2); x <= Math.ceil(center + 2); x += 1) paint(x, mouthY, "accent");
+  paint(Math.floor(center), mouthY + 1, "accent");
+
+  if (hornChance > 0.6) {
+    paint(4, 2, "accent"); paint(11, 2, "accent");
+    paint(3, 1, "highlight"); paint(12, 1, "highlight");
+  }
+  if (maskChance > 0.45) {
+    for (let x = 4; x <= 11; x += 1) paint(x, eyeY, "shadow");
+    paint(Math.floor(center - eyeGap), eyeY, "detail");
+    paint(Math.ceil(center + eyeGap), eyeY, "detail");
+  }
+
+  pixels.forEach(({ x, y, color }) => {
+    ctx.fillStyle = palette[color];
     ctx.fillRect(x * scale, y * scale, scale, scale);
   });
 
-  canvas.setAttribute("aria-label", `${species} 8-bit portrait`);
+  canvas.setAttribute("aria-label", `${species} generated portrait`);
 };
 
 const createCreatureSheet = (): string => {
@@ -325,8 +184,9 @@ const createCreatureSheet = (): string => {
 };
 
 const renderCreature = (): void => {
-  renderPixelPortrait(speciesSelect.value);
-  result.textContent = createCreatureSheet();
+  const sheet = createCreatureSheet();
+  result.textContent = sheet;
+  renderPixelPortrait(speciesSelect.value, sheet);
 };
 
 const randomizeSelections = (): void => {
