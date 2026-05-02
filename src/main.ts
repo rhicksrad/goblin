@@ -205,6 +205,50 @@ const speciesSprites = {
   ]
 } as const;
 
+type PixelDot = { x: number; y: number; color: number };
+
+const spriteAccents: Record<keyof typeof spritePalettes, PixelDot[]> = {
+  goblin: [
+    { x: 3, y: 5, color: 5 }, { x: 12, y: 5, color: 5 },
+    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
+    { x: 8, y: 10, color: 4 }
+  ],
+  gremlin: [
+    { x: 2, y: 3, color: 5 }, { x: 13, y: 3, color: 5 },
+    { x: 4, y: 6, color: 3 }, { x: 11, y: 6, color: 3 },
+    { x: 8, y: 9, color: 4 }
+  ],
+  raccoon: [
+    { x: 4, y: 6, color: 5 }, { x: 5, y: 6, color: 5 }, { x: 6, y: 6, color: 5 },
+    { x: 9, y: 6, color: 5 }, { x: 10, y: 6, color: 5 }, { x: 11, y: 6, color: 5 },
+    { x: 7, y: 9, color: 3 }, { x: 8, y: 9, color: 3 }
+  ],
+  troll: [
+    { x: 3, y: 3, color: 4 }, { x: 12, y: 3, color: 4 },
+    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
+    { x: 8, y: 11, color: 5 }
+  ],
+  ogre: [
+    { x: 4, y: 3, color: 5 }, { x: 11, y: 3, color: 5 },
+    { x: 5, y: 7, color: 3 }, { x: 10, y: 7, color: 3 },
+    { x: 7, y: 11, color: 4 }, { x: 8, y: 11, color: 4 }
+  ],
+  pigeon: [
+    { x: 7, y: 5, color: 3 }, { x: 8, y: 5, color: 3 },
+    { x: 9, y: 7, color: 4 }, { x: 10, y: 7, color: 4 },
+    { x: 6, y: 8, color: 5 }
+  ],
+  mothman: [
+    { x: 3, y: 5, color: 4 }, { x: 12, y: 5, color: 4 },
+    { x: 5, y: 7, color: 5 }, { x: 10, y: 7, color: 5 },
+    { x: 8, y: 10, color: 4 }
+  ],
+  "bog-sprite": [
+    { x: 4, y: 5, color: 4 }, { x: 11, y: 5, color: 4 },
+    { x: 6, y: 7, color: 3 }, { x: 9, y: 7, color: 3 },
+    { x: 8, y: 10, color: 5 }
+  ]
+};
 
 
 
@@ -236,6 +280,12 @@ const renderPixelPortrait = (species: string): void => {
       ctx.fillRect(x * scale, y * scale, scale, scale);
     }
   }
+
+  const accents = spriteAccents[key] ?? spriteAccents.goblin;
+  accents.forEach(({ x, y, color: colorIndex }) => {
+    ctx.fillStyle = palette[colorIndex] ?? "#00000000";
+    ctx.fillRect(x * scale, y * scale, scale, scale);
+  });
 
   canvas.setAttribute("aria-label", `${species} 8-bit portrait`);
 };
